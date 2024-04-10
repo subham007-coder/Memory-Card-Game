@@ -6,13 +6,33 @@
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <title>Memory Card Game</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
     <main>
       <h3>Memory Card Game</h3>
 
       <div class="info">
-        <!-- info Game -->
+        <!-- helth -->
+        <div class="helth">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <!-- <i class="fa-regular fa-star"></i> -->
+        </div>
+
+        <div class="move">
+          <p>MOVE <i class="fa-solid fa-angles-right"></i> <span class="moveCounter">0</span></p>
+        </div>
+
+        <div class="time">
+          <p>Time :- <span class="timeUpdate">0:00</span></p>
+        </div>
+
+        <div class="restart">
+          <i class="fa-solid fa-rotate-right retry"></i>
+        </div>
+
       </div>
 
       <div class="row bg-blue">
@@ -131,7 +151,7 @@
           <div class="card-inner">
             <div class="card-front">?</div>
             <div class="card-back">
-              <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/307842869_492583069110990_8976498851017571163_n.jpg?stp=dst-jpg_p403x403&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=5ylm20gEsMoAb5tVApA&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdWonTKHKcb_kb750QPKg15Mwcba5KuKVSMkvoFmjgERyQ&oe=663DD430" alt="">
+              <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/429450977_969693018084013_5987884752748792947_n.jpg?stp=dst-jpg_p403x403&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=krxplM_C-kgAb76DH1e&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdUBCs8lqYYcJeVoTsq4LaOP0fkCJU2F6ArUMGggRfAo2Q&oe=663DB12B" alt="">
             </div>
           </div>
         </div>
@@ -147,11 +167,16 @@
           <div class="card-inner">
             <div class="card-front">?</div>
             <div class="card-back">
-              <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/429450977_969693018084013_5987884752748792947_n.jpg?stp=dst-jpg_p403x403&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=krxplM_C-kgAb76DH1e&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdUBCs8lqYYcJeVoTsq4LaOP0fkCJU2F6ArUMGggRfAo2Q&oe=663DB12B" alt="">
+              <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/307842869_492583069110990_8976498851017571163_n.jpg?stp=dst-jpg_p403x403&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=5ylm20gEsMoAb5tVApA&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdWonTKHKcb_kb750QPKg15Mwcba5KuKVSMkvoFmjgERyQ&oe=663DD430" alt="">
             </div>
           </div>
         </div>
       </div>
+
+      <div class="startbtn">
+        <button class="start">START</button>
+      </div>
+
     </main>
 
     <script src="script.js"></script>
