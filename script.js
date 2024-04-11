@@ -21,6 +21,34 @@ startBtn.addEventListener("click", () => {
   });
 });
 
+
+
+
+
+
+// Function to shuffle the deck of cards
+function shuffleDeck() {
+  // Get all the card elements
+  const cards = document.querySelectorAll(".card");
+
+  // Convert NodeList to array
+  const cardArray = Array.from(cards);
+
+  // Shuffle the array using Fisher-Yates algorithm
+  for (let i = cardArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [cardArray[i].innerHTML, cardArray[j].innerHTML] = [cardArray[j].innerHTML, cardArray[i].innerHTML];
+  }
+
+  // Append the shuffled cards back to the deck
+  cardArray.forEach((card, index) => {
+    cards[index].innerHTML = card.innerHTML;
+  });
+}
+
+
+
+
 // Reset game function
 function resetGame() {
   // Reset time
@@ -39,7 +67,7 @@ function resetGame() {
     inner.classList.remove("is-flipped");
     inner.parentNode.classList.remove("matched"); // Remove matched class
   });
-  
+  shuffleDeck();
   // Show start button
   // startBtn.style.display = "block";
 }
