@@ -64,17 +64,29 @@ function resetGame() {
 
   // Reset flipped cards array
   flippedCards = [];
+  matchedCards = []; // Reset matched cards array
+
+  // Remove animations and extra styles
+  gsap.set(".card", { clearProps: "all" });
+
+  // Remove 'matched' class from cards
+  card.forEach((card) => {
+    card.classList.remove("matched");
+  });
 
   // Reset card flips
   cardInner.forEach((inner) => {
     inner.classList.remove("is-flipped");
-    inner.parentNode.classList.remove("matched");
-    gsap.set(inner.parentNode, { clearProps: 'all' }); // Clear any GSAP properties
   });
 
+  // Enable card flipping again
+  card.forEach((card) => {
+    card.addEventListener("click", flipCard);
+  });
 
   shuffleDeck();
 }
+
 
 // Retry button click event listener
 reTry.addEventListener("click", resetGame);
