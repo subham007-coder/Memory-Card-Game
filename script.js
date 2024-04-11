@@ -71,6 +71,8 @@ function resetGame() {
     inner.parentNode.classList.remove("matched");
     gsap.set(inner.parentNode, { clearProps: 'all' }); // Clear any GSAP properties
   });
+
+
   shuffleDeck();
 }
 
