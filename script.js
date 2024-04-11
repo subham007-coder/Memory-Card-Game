@@ -61,16 +61,6 @@ function timeStart() {
 
 // Function to flip a card
 function flipCard() {
-  
- // Check if the card is already matched
- if (this.parentNode.classList.contains("matched")) {
-  return; // Exit the function if the card is already matched
-}
-
-// Check if the card is already flipped
-if (this.querySelector(".card-inner").classList.contains("is-flipped")) {
-  return; // Exit the function if the card is already flipped
-}
 
   if (flippedCards.length < 2 && !flippedCards.includes(this)) {
     this.querySelector(".card-inner").classList.toggle("is-flipped");
