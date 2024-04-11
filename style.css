@@ -146,3 +146,11 @@ main .row .col{
 .card-inner.is-flipped {
   transform: rotateY(180deg); /* Rotate the card inner when flipped */
 }
+
+.matched {
+  /* Add your extra styles or animations here */
+  /* For example: */
+  border: 2px solid green; /* Add a border */
+  transform: scale(1.1); /* Scale up the card */
+  /* Add more styles or animations as needed */
+}
