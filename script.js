@@ -15,16 +15,19 @@ let matchedCards = [];
 startBtn.addEventListener("click", () => {
   startBtn.style.display = "none";
   timeStart();
+
+  gsap.from(".card", {
+    duration: 0.5,
+    opacity: 0,
+    ease: "power1.inOut",
+    stagger: 0.1,
+  });
+
   // Enable card flipping
   card.forEach((card) => {
     card.addEventListener("click", flipCard);
   });
 });
-
-
-
-
-
 
 // Function to shuffle the deck of cards
 function shuffleDeck() {
@@ -37,7 +40,10 @@ function shuffleDeck() {
   // Shuffle the array using Fisher-Yates algorithm
   for (let i = cardArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [cardArray[i].innerHTML, cardArray[j].innerHTML] = [cardArray[j].innerHTML, cardArray[i].innerHTML];
+    [cardArray[i].innerHTML, cardArray[j].innerHTML] = [
+      cardArray[j].innerHTML,
+      cardArray[i].innerHTML,
+    ];
   }
 
   // Append the shuffled cards back to the deck
@@ -46,35 +52,30 @@ function shuffleDeck() {
   });
 }
 
-
-
-
 // Reset game function
 function resetGame() {
   // Reset time
   time = 0;
-  timeUpdate.innerHTML = "0:00"; // Reset timer display
-  
+  timeUpdate.innerHTML = "0:00";
+
   // Reset move counter
   moves = 0;
-  moveCounter.textContent = "0"; // Reset move counter display
-  
+  moveCounter.textContent = "0";
+
   // Reset flipped cards array
   flippedCards = [];
-  
+
   // Reset card flips
   cardInner.forEach((inner) => {
     inner.classList.remove("is-flipped");
-    inner.parentNode.classList.remove("matched"); // Remove matched class
+    inner.parentNode.classList.remove("matched");
+    gsap.set(inner.parentNode, { clearProps: 'all' }); // Clear any GSAP properties
   });
   shuffleDeck();
-  // Show start button
-  // startBtn.style.display = "block";
 }
 
 // Retry button click event listener
 reTry.addEventListener("click", resetGame);
-
 
 // Time update
 function timeStart() {
@@ -89,7 +90,6 @@ function timeStart() {
 
 // Function to flip a card
 function flipCard() {
-
   if (flippedCards.length < 2 && !flippedCards.includes(this)) {
     this.querySelector(".card-inner").classList.toggle("is-flipped");
     flippedCards.push(this);
@@ -119,6 +119,16 @@ function checkMatch() {
     // Add extra style for better UX match Card
     card1.classList.add("matched");
     card2.classList.add("matched");
+
+    gsap.to(".matched", {
+      x: 700,
+      duration: 1,
+      delay: 0.5,
+      ease: "power1.inOut",
+      rotate: 360,
+      scale: 0.5,
+      stagger: 0.5,
+    });
   } else {
     // Cards don't match, flip them back
     setTimeout(() => {
