@@ -11,6 +11,20 @@ const main = document.querySelector("main");
 let flippedCards = [];
 let matchedCards = [];
 
+// Function to flip a card
+function flipCard() {
+  if (flippedCards.length < 2 && !flippedCards.includes(this)) {
+    this.querySelector(".card-inner").classList.toggle("is-flipped");
+    flippedCards.push(this);
+
+    if (flippedCards.length === 2) {
+      checkMatch();
+      moves++; // Increment move counter
+      moveCounter.textContent = moves; // Update move counter display
+    }
+  }
+}
+
 // Start button
 startBtn.addEventListener("click", () => {
   startBtn.style.display = "none";
@@ -52,8 +66,12 @@ function shuffleDeck() {
   });
 }
 
+// Retry button click event listener
+reTry.addEventListener("click", resetGame);
+
 // Reset game function
 function resetGame() {
+
   // Reset time
   time = 0;
   timeUpdate.innerHTML = "0:00";
@@ -74,22 +92,21 @@ function resetGame() {
     card.classList.remove("matched");
   });
 
-  // Reset card flips
-  cardInner.forEach((inner) => {
+ // Remove 'is-flipped' class from all card-inner elements
+ cardInner.forEach((inner) => {
+  if (inner.classList.contains("is-flipped")) {
     inner.classList.remove("is-flipped");
-  });
+  }
+});
 
-  // Enable card flipping again
-  card.forEach((card) => {
-    card.addEventListener("click", flipCard);
-  });
+ // Enable card flipping again
+ card.forEach((card) => {
+  card.addEventListener("click", flipCard);
+});
 
+  
   shuffleDeck();
 }
-
-
-// Retry button click event listener
-reTry.addEventListener("click", resetGame);
 
 // Time update
 function timeStart() {
@@ -102,26 +119,13 @@ function timeStart() {
   }, 1000);
 }
 
-// Function to flip a card
-function flipCard() {
-  if (flippedCards.length < 2 && !flippedCards.includes(this)) {
-    this.querySelector(".card-inner").classList.toggle("is-flipped");
-    flippedCards.push(this);
-
-    if (flippedCards.length === 2) {
-      checkMatch();
-      moves++; // Increment move counter
-      moveCounter.textContent = moves; // Update move counter display
-    }
-  }
-}
-
 // Check if cards match
 function checkMatch() {
   const [card1, card2] = flippedCards;
   const id1 = card1.querySelector(".card-front").id;
   const id2 = card2.querySelector(".card-front").id;
 
+  
   if (id1 === id2) {
     matchedCards.push(id1, id2);
     if (matchedCards.length === card.length) {
@@ -129,7 +133,7 @@ function checkMatch() {
       console.log("Game Winner!");
     }
     console.log("Box match"); // Log when two cards match
-
+    
     // Add extra style for better UX match Card
     card1.classList.add("matched");
     card2.classList.add("matched");
@@ -141,15 +145,16 @@ function checkMatch() {
       ease: "power1.inOut",
       rotate: 360,
       scale: 0.5,
-      stagger: 0.5,
+      // stagger: 0.5,
     });
+
   } else {
     // Cards don't match, flip them back
     setTimeout(() => {
       card1.querySelector(".card-inner").classList.toggle("is-flipped");
       card2.querySelector(".card-inner").classList.toggle("is-flipped");
       flippedCards = [];
-    }, 1000);
+    }, 400);
   }
   flippedCards = [];
 }
