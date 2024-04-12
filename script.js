@@ -145,7 +145,12 @@ function checkMatch() {
       ease: "power1.inOut",
       rotate: 360,
       scale: 0.5,
-      // stagger: 0.5,
+      onComplete: function () {
+        setTimeout(() => {
+          card1.querySelector(".card-inner").classList.remove("is-flipped");
+          card2.querySelector(".card-inner").classList.remove("is-flipped");
+        }, 1000); // Adjust the delay if needed
+      }
     });
 
   } else {
