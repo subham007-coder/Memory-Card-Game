@@ -41,6 +41,7 @@ startBtn.addEventListener("click", () => {
   card.forEach((card) => {
     card.addEventListener("click", flipCard);
   });
+  shuffleDeck();
 });
 
 // Function to shuffle the deck of cards
@@ -82,7 +83,7 @@ function resetGame() {
 
   // Reset flipped cards array
   flippedCards = [];
-  matchedCards = []; // Reset matched cards array
+  matchedCards = [];
 
   // Remove animations and extra styles
   gsap.set(".card", { clearProps: "all" });
@@ -92,19 +93,6 @@ function resetGame() {
     card.classList.remove("matched");
   });
 
- // Remove 'is-flipped' class from all card-inner elements
- cardInner.forEach((inner) => {
-  if (inner.classList.contains("is-flipped")) {
-    inner.classList.remove("is-flipped");
-  }
-});
-
- // Enable card flipping again
- card.forEach((card) => {
-  card.addEventListener("click", flipCard);
-});
-
-  
   shuffleDeck();
 }
 
@@ -139,7 +127,7 @@ function checkMatch() {
     card2.classList.add("matched");
 
     gsap.to(".matched", {
-      x: 700,
+      x: 500,
       duration: 1,
       delay: 0.5,
       ease: "power1.inOut",
@@ -149,7 +137,7 @@ function checkMatch() {
         setTimeout(() => {
           card1.querySelector(".card-inner").classList.remove("is-flipped");
           card2.querySelector(".card-inner").classList.remove("is-flipped");
-        }, 1000); // Adjust the delay if needed
+        }, 400); // Adjust the delay if needed
       }
     });
 
@@ -159,7 +147,7 @@ function checkMatch() {
       card1.querySelector(".card-inner").classList.toggle("is-flipped");
       card2.querySelector(".card-inner").classList.toggle("is-flipped");
       flippedCards = [];
-    }, 400);
+    }, 350);
   }
   flippedCards = [];
 }

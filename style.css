@@ -10,6 +10,7 @@ html, body{
   width: 100%;
   background-color: #1E2749;
   color: #fff;
+  overflow-x: hidden;
 }
 
 main .startbtn{
