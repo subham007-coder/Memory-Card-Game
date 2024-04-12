@@ -155,3 +155,11 @@ main .row .col{
   transform: scale(1.1); /* Scale up the card */
   /* Add more styles or animations as needed */
 }
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
