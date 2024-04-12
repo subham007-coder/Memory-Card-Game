@@ -21,6 +21,8 @@ function flipCard() {
       checkMatch();
       moves++; // Increment move counter
       moveCounter.textContent = moves; // Update move counter display
+      // healthCheck();
+      starSetter();
     }
   }
 }
@@ -72,7 +74,6 @@ reTry.addEventListener("click", resetGame);
 
 // Reset game function
 function resetGame() {
-
   // Reset time
   time = 0;
   timeUpdate.innerHTML = "0:00";
@@ -113,7 +114,6 @@ function checkMatch() {
   const id1 = card1.querySelector(".card-front").id;
   const id2 = card2.querySelector(".card-front").id;
 
-  
   if (id1 === id2) {
     matchedCards.push(id1, id2);
     if (matchedCards.length === card.length) {
@@ -121,7 +121,7 @@ function checkMatch() {
       console.log("Game Winner!");
     }
     console.log("Box match"); // Log when two cards match
-    
+
     // Add extra style for better UX match Card
     card1.classList.add("matched");
     card2.classList.add("matched");
@@ -138,9 +138,8 @@ function checkMatch() {
           card1.querySelector(".card-inner").classList.remove("is-flipped");
           card2.querySelector(".card-inner").classList.remove("is-flipped");
         }, 400); // Adjust the delay if needed
-      }
+      },
     });
-
   } else {
     // Cards don't match, flip them back
     setTimeout(() => {
@@ -150,4 +149,28 @@ function checkMatch() {
     }, 350);
   }
   flippedCards = [];
+}
+
+// healthCheck function
+
+// Define star-related variables
+const starsList = document.querySelectorAll(".helth i");
+const halfStar = "fa-solid fa-star-half-stroke";
+const emptyStar = "fa-regular fa-star";
+
+// Function to set stars
+function starSetter() {
+  // Set stars based on the number of moves
+  if (moves >= 10 && moves <= 15) {
+    starsList[2].className = halfStar;
+  } else if (moves >= 16 && moves <= 20) {
+    starsList[2].className = emptyStar;
+    starsList[1].className = halfStar;
+  } else if (moves >= 21 && moves <= 24) {
+    starsList[1].className = emptyStar;
+  } else if (moves >= 25 && moves <= 28) {
+    starsList[0].className = halfStar;
+  } else if (moves >= 29) {
+    starsList[0].className = emptyStar;
+  }
 }
