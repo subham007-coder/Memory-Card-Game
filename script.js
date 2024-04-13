@@ -44,6 +44,7 @@ startBtn.addEventListener("click", () => {
     card.addEventListener("click", flipCard);
   });
   shuffleDeck();
+  playAudio();
 });
 
 // Function to shuffle the deck of cards
@@ -95,6 +96,7 @@ function resetGame() {
   });
 
   shuffleDeck();
+  playAudio();
 }
 
 // Time update
@@ -186,7 +188,90 @@ function getRandomColor() {
 // Apply random colors to all card front sides
 const cardFronts = document.querySelectorAll(".card-front");
 
-cardFronts.forEach(cardFront => {
+cardFronts.forEach((cardFront) => {
   const randomColor = getRandomColor();
   cardFront.style.backgroundColor = randomColor;
 });
+
+// play song on cardFront click
+function playAudio() {
+  // for TumSe
+  document.querySelectorAll("#TumSe").forEach((TumSe) => {
+    document.querySelectorAll("#A").forEach((a) => {
+      // console.log(a);
+      a.addEventListener("click", () => {
+        TumSe.play();
+      });
+    });
+  });
+
+  // for Deva
+  document.querySelectorAll("#Deva").forEach((Deva) => {
+    document.querySelectorAll("#B").forEach((b) => {
+      // console.log(b);
+      b.addEventListener("click", () => {
+        Deva.play();
+      });
+    });
+  });
+
+  // for Ludo
+  document.querySelectorAll("#Ludo").forEach((Ludo) => {
+    document.querySelectorAll("#C").forEach((c) => {
+      // console.log(c);
+      c.addEventListener("click", () => {
+        Ludo.play();
+      });
+    });
+  });
+
+  // for MisMatch
+  document.querySelectorAll("#MisMatch").forEach((MisMatch) => {
+    document.querySelectorAll("#D").forEach((d) => {
+      // console.log(d);
+      d.addEventListener("click", () => {
+        MisMatch.play();
+      });
+    });
+  });
+
+  // for Dunki
+  document.querySelectorAll("#Dunki").forEach((Dunki) => {
+    document.querySelectorAll("#E").forEach((e) => {
+      // console.log(e);
+      e.addEventListener("click", () => {
+        Dunki.play();
+      });
+    });
+  });
+
+  // for Hasi
+  document.querySelectorAll("#Hasi").forEach((Hasi) => {
+    document.querySelectorAll("#F").forEach((f) => {
+      // console.log(f);
+      f.addEventListener("click", () => {
+        Hasi.play();
+      });
+    });
+  });
+
+  // for Heriye
+  document.querySelectorAll("#Heriye").forEach((Heriye) => {
+    document.querySelectorAll("#G").forEach((g) => {
+      // console.log(g);
+      g.addEventListener("click", () => {
+        Heriye.play();
+      });
+    });
+  });
+
+  // for Chaleya
+  document.querySelectorAll("#Chaleya").forEach((Chaleya) => {
+    document.querySelectorAll("#H").forEach((h) => {
+      // console.log(h);
+      h.addEventListener("click", () => {
+        Chaleya.play();
+      });
+    });
+  });
+}
