@@ -137,7 +137,7 @@ function checkMatch() {
         setTimeout(() => {
           card1.querySelector(".card-inner").classList.remove("is-flipped");
           card2.querySelector(".card-inner").classList.remove("is-flipped");
-        }, 400); // Adjust the delay if needed
+        }, 200); // Adjust the delay if needed
       },
     });
   } else {
@@ -146,7 +146,7 @@ function checkMatch() {
       card1.querySelector(".card-inner").classList.toggle("is-flipped");
       card2.querySelector(".card-inner").classList.toggle("is-flipped");
       flippedCards = [];
-    }, 350);
+    }, 250);
   }
   flippedCards = [];
 }
@@ -174,3 +174,19 @@ function starSetter() {
     starsList[0].className = emptyStar;
   }
 }
+
+// Function to generate a random RGB color
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r},${g},${b})`;
+}
+
+// Apply random colors to all card front sides
+const cardFronts = document.querySelectorAll(".card-front");
+
+cardFronts.forEach(cardFront => {
+  const randomColor = getRandomColor();
+  cardFront.style.backgroundColor = randomColor;
+});
