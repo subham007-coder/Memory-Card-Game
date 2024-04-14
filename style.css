@@ -14,7 +14,7 @@ body {
   overflow-x: hidden;
 }
 
-main{
+main {
   height: calc(100vh - 80px);
 }
 
@@ -172,5 +172,29 @@ footer {
 }
 
 footer p {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.res {
+  color: red;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 30px;
+  position: absolute;
+  top: 0%;
+  left: 35%;
+  transform: translate(-50%, -50%);
+  height: 0;
+  z-index: 1;
+  display: none;
+}
+
+.again {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  z-index: 1;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
 }

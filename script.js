@@ -7,14 +7,13 @@ const timeUpdate = document.querySelector(".timeUpdate");
 const reTry = document.querySelector(".retry");
 const cardInner = document.querySelectorAll(".card-inner");
 const main = document.querySelector("main");
-
+let res = document.querySelector(".res");
 // card store array
 let flippedCards = [];
 let matchedCards = [];
 
 
 // songs store array
-
 let TumSe = document.getElementById("TumSe");
 let Deva = document.getElementById("Deva");
 let Ludo = document.getElementById("Ludo");
@@ -35,8 +34,8 @@ function flipCard() {
       checkMatch();
       moves++; // Increment move counter
       moveCounter.textContent = moves; // Update move counter display
-      // healthCheck();
       starSetter();
+      gameLose();
     }
   }
 }
@@ -84,6 +83,18 @@ function shuffleDeck() {
   });
 }
 
+// Define star-related variables
+const starsList = document.querySelectorAll(".helth i");
+const solidStar = "fa-solid fa-star";
+const emptyStar = "fa-regular fa-star";
+
+// Function to reset stars to their initial state
+function resetStars() {
+  starsList.forEach((star) => {
+    star.className = solidStar; // Assuming all stars should start as solid
+  });
+}
+
 // Retry button click event listener
 reTry.addEventListener("click", resetGame);
 
@@ -108,6 +119,8 @@ function resetGame() {
   card.forEach((card) => {
     card.classList.remove("matched");
   });
+  
+  resetStars();
 
   shuffleDeck();
   playAudio();
@@ -129,7 +142,7 @@ function checkMatch() {
   const [card1, card2] = flippedCards;
   const id1 = card1.querySelector(".card-front").id;
   const id2 = card2.querySelector(".card-front").id;
-
+  
   if (id1 === id2) {
     matchedCards.push(id1, id2);
     if (matchedCards.length === card.length) {
@@ -189,11 +202,10 @@ function checkMatch() {
 }
 
 
-// healthCheck function
 // Define star-related variables
-const starsList = document.querySelectorAll(".helth i");
+// const starsList = document.querySelectorAll(".helth i");
 const halfStar = "fa-solid fa-star-half-stroke";
-const emptyStar = "fa-regular fa-star";
+// const emptyStar = "fa-regular fa-star";
 
 // Function to set stars
 function starSetter() {
@@ -250,7 +262,7 @@ function playAudio() {
       });
     });
   });
-
+  
   // for Ludo
   document.querySelectorAll("#Ludo").forEach(() => {
     document.querySelectorAll("#C").forEach((c) => {
@@ -310,4 +322,38 @@ function playAudio() {
       });
     });
   });
+}
+
+
+// Game Lose Function
+function gameLose() {
+
+  if (matchedCards.length != card.length && moves == 30) {
+    // All cards matched, game over
+    console.log("Game Over!");
+    // res.innerHTML = "Game Over!";
+    res.style.display = "block";
+
+    gsap.to(".res", {
+      y: 200,
+      x: 50,
+      duration: 1,
+      delay: 0.5,
+      ease: "power1.inOut",
+      rotate: 360,
+      color: "white",
+    });
+    
+    main.style.display = "none";
+
+    let again = document.querySelector(".again");
+    again.style.display = "block";
+    again.addEventListener("click",() => {
+      main.style.display = "block";
+      again.style.display = "none";
+      res.style.display = "none";
+      resetGame();
+    });
+
+  }
 }
