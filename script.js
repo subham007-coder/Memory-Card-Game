@@ -8,8 +8,22 @@ const reTry = document.querySelector(".retry");
 const cardInner = document.querySelectorAll(".card-inner");
 const main = document.querySelector("main");
 
+// card store array
 let flippedCards = [];
 let matchedCards = [];
+
+
+// songs store array
+
+let TumSe = document.getElementById("TumSe");
+let Deva = document.getElementById("Deva");
+let Ludo = document.getElementById("Ludo");
+let MisMatch = document.getElementById("MisMatch");
+let Dunki = document.getElementById("Dunki");
+let Hasi = document.getElementById("Hasi");
+let Heriye = document.getElementById("Heriye");
+let Chaleya = document.getElementById("Chaleya");
+
 
 // Function to flip a card
 function flipCard() {
@@ -128,6 +142,18 @@ function checkMatch() {
     card1.classList.add("matched");
     card2.classList.add("matched");
 
+    // song stopping after match
+    setTimeout(() => {
+      TumSe.pause();
+      Deva.pause();
+      Ludo.pause();
+      MisMatch.pause();
+      Dunki.pause();
+      Hasi.pause();
+      Heriye.pause();
+      Chaleya.pause();
+    }, 2500);
+
     gsap.to(".matched", {
       x: 500,
       duration: 1,
@@ -148,13 +174,22 @@ function checkMatch() {
       card1.querySelector(".card-inner").classList.toggle("is-flipped");
       card2.querySelector(".card-inner").classList.toggle("is-flipped");
       flippedCards = [];
+      // song pause
+      TumSe.pause();
+      Deva.pause();
+      Ludo.pause();
+      MisMatch.pause();
+      Dunki.pause();
+      Hasi.pause();
+      Heriye.pause();
+      Chaleya.pause();
     }, 250);
   }
   flippedCards = [];
 }
 
-// healthCheck function
 
+// healthCheck function
 // Define star-related variables
 const starsList = document.querySelectorAll(".helth i");
 const halfStar = "fa-solid fa-star-half-stroke";
@@ -196,17 +231,18 @@ cardFronts.forEach((cardFront) => {
 // play song on cardFront click
 function playAudio() {
   // for TumSe
-  document.querySelectorAll("#TumSe").forEach((TumSe) => {
+  document.querySelectorAll("#TumSe").forEach(() => {
     document.querySelectorAll("#A").forEach((a) => {
-      // console.log(a);
+      console.log(a);
       a.addEventListener("click", () => {
         TumSe.play();
       });
     });
   });
 
+
   // for Deva
-  document.querySelectorAll("#Deva").forEach((Deva) => {
+  document.querySelectorAll("#Deva").forEach(() => {
     document.querySelectorAll("#B").forEach((b) => {
       // console.log(b);
       b.addEventListener("click", () => {
@@ -216,7 +252,7 @@ function playAudio() {
   });
 
   // for Ludo
-  document.querySelectorAll("#Ludo").forEach((Ludo) => {
+  document.querySelectorAll("#Ludo").forEach(() => {
     document.querySelectorAll("#C").forEach((c) => {
       // console.log(c);
       c.addEventListener("click", () => {
@@ -226,7 +262,7 @@ function playAudio() {
   });
 
   // for MisMatch
-  document.querySelectorAll("#MisMatch").forEach((MisMatch) => {
+  document.querySelectorAll("#MisMatch").forEach(() => {
     document.querySelectorAll("#D").forEach((d) => {
       // console.log(d);
       d.addEventListener("click", () => {
@@ -236,7 +272,7 @@ function playAudio() {
   });
 
   // for Dunki
-  document.querySelectorAll("#Dunki").forEach((Dunki) => {
+  document.querySelectorAll("#Dunki").forEach(() => {
     document.querySelectorAll("#E").forEach((e) => {
       // console.log(e);
       e.addEventListener("click", () => {
@@ -246,7 +282,7 @@ function playAudio() {
   });
 
   // for Hasi
-  document.querySelectorAll("#Hasi").forEach((Hasi) => {
+  document.querySelectorAll("#Hasi").forEach(() => {
     document.querySelectorAll("#F").forEach((f) => {
       // console.log(f);
       f.addEventListener("click", () => {
@@ -256,7 +292,7 @@ function playAudio() {
   });
 
   // for Heriye
-  document.querySelectorAll("#Heriye").forEach((Heriye) => {
+  document.querySelectorAll("#Heriye").forEach(() => {
     document.querySelectorAll("#G").forEach((g) => {
       // console.log(g);
       g.addEventListener("click", () => {
@@ -266,7 +302,7 @@ function playAudio() {
   });
 
   // for Chaleya
-  document.querySelectorAll("#Chaleya").forEach((Chaleya) => {
+  document.querySelectorAll("#Chaleya").forEach(() => {
     document.querySelectorAll("#H").forEach((h) => {
       // console.log(h);
       h.addEventListener("click", () => {
