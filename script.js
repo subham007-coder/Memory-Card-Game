@@ -233,7 +233,7 @@ function playAudio() {
   // for TumSe
   document.querySelectorAll("#TumSe").forEach(() => {
     document.querySelectorAll("#A").forEach((a) => {
-      console.log(a);
+      // console.log(a);
       a.addEventListener("click", () => {
         TumSe.play();
       });
