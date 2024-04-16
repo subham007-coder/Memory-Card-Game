@@ -125,7 +125,7 @@ function resetGame() {
     card.addEventListener("click", flipCard);
     // card.addEventListener("click", timeStart);
   });
-
+  res.style.display = "none";
   resetStars();
   shuffleDeck();
   playAudio();
@@ -153,7 +153,8 @@ function checkMatch() {
     matchedCards.push(id1, id2);
     if (matchedCards.length === card.length) {
       // All cards matched
-      console.log("Game Winner!");
+      console.log("Game Winner!"); 
+      gameWin()
     }
     console.log("Box match"); // Log when two cards match
 
@@ -328,12 +329,20 @@ function playAudio() {
   });
 }
 
+// Game Win Function
+
+function gameWin() {
+    res.innerHTML = "You are Winner!";
+    res.style.display = "block";
+    res.style.color = "green";
+}
+
 // Game Lose Function
 function gameLose() {
   if (matchedCards.length != card.length && moves == 30) {
     // All cards matched, game over
     console.log("Game Over!");
-    // res.innerHTML = "Game Over!";
+    res.innerHTML = "Game Over!";
     res.style.display = "block";
 
     gsap.to(".res", {
