@@ -1,0 +1,21 @@
+@media screen and (min-width: 500px) {
+    html, body {
+  display: flex;
+  justify-content: center;
+}
+
+main {
+    /* background-color: #ecda17; */
+    width: 400px;
+    height: 100%;
+  }
+
+main .hero{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+}

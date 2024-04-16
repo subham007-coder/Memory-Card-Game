@@ -12,7 +12,6 @@ let res = document.querySelector(".res");
 let flippedCards = [];
 let matchedCards = [];
 
-
 // songs store array
 let TumSe = document.getElementById("TumSe");
 let Deva = document.getElementById("Deva");
@@ -22,7 +21,6 @@ let Dunki = document.getElementById("Dunki");
 let Hasi = document.getElementById("Hasi");
 let Heriye = document.getElementById("Heriye");
 let Chaleya = document.getElementById("Chaleya");
-
 
 // Function to flip a card
 function flipCard() {
@@ -100,6 +98,8 @@ reTry.addEventListener("click", resetGame);
 
 // Reset game function
 function resetGame() {
+  startBtn.style.display = "none";
+
   // Reset time
   time = 0;
   timeUpdate.innerHTML = "0:00";
@@ -119,11 +119,17 @@ function resetGame() {
   card.forEach((card) => {
     card.classList.remove("matched");
   });
-  
-  resetStars();
 
+  // Enable card flipping
+  card.forEach((card) => {
+    card.addEventListener("click", flipCard);
+    // card.addEventListener("click", timeStart);
+  });
+
+  resetStars();
   shuffleDeck();
   playAudio();
+  timeStart();
 }
 
 // Time update
@@ -142,11 +148,11 @@ function checkMatch() {
   const [card1, card2] = flippedCards;
   const id1 = card1.querySelector(".card-front").id;
   const id2 = card2.querySelector(".card-front").id;
-  
+
   if (id1 === id2) {
     matchedCards.push(id1, id2);
     if (matchedCards.length === card.length) {
-      // All cards matched, game over
+      // All cards matched
       console.log("Game Winner!");
     }
     console.log("Box match"); // Log when two cards match
@@ -173,7 +179,7 @@ function checkMatch() {
       delay: 0.5,
       ease: "power1.inOut",
       rotate: 360,
-      scale: 0.5,
+      scale: 0,
       onComplete: function () {
         setTimeout(() => {
           card1.querySelector(".card-inner").classList.remove("is-flipped");
@@ -200,7 +206,6 @@ function checkMatch() {
   }
   flippedCards = [];
 }
-
 
 // Define star-related variables
 // const starsList = document.querySelectorAll(".helth i");
@@ -252,7 +257,6 @@ function playAudio() {
     });
   });
 
-
   // for Deva
   document.querySelectorAll("#Deva").forEach(() => {
     document.querySelectorAll("#B").forEach((b) => {
@@ -262,7 +266,7 @@ function playAudio() {
       });
     });
   });
-  
+
   // for Ludo
   document.querySelectorAll("#Ludo").forEach(() => {
     document.querySelectorAll("#C").forEach((c) => {
@@ -324,10 +328,8 @@ function playAudio() {
   });
 }
 
-
 // Game Lose Function
 function gameLose() {
-
   if (matchedCards.length != card.length && moves == 30) {
     // All cards matched, game over
     console.log("Game Over!");
@@ -335,25 +337,27 @@ function gameLose() {
     res.style.display = "block";
 
     gsap.to(".res", {
-      y: 200,
-      x: 50,
+      y: 50,
+      x: 20,
       duration: 1,
       delay: 0.5,
       ease: "power1.inOut",
       rotate: 360,
+      fontFamily: "Georgia, serif",
       color: "white",
+      repeat: -1, // Repeat indefinitely
+      yoyo: true // Reverse the animation back and forth
     });
-    
+
     main.style.display = "none";
 
     let again = document.querySelector(".again");
     again.style.display = "block";
-    again.addEventListener("click",() => {
+    again.addEventListener("click", () => {
       main.style.display = "block";
       again.style.display = "none";
       res.style.display = "none";
       resetGame();
     });
-
   }
 }
