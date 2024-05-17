@@ -146,6 +146,7 @@ main .row .col {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top;
 }
 
 .card-inner.is-flipped {
