@@ -233,3 +233,17 @@ footer p {
   box-shadow: #3c4fe0 0 3px 7px inset;
   transform: translateY(2px);
 }
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 75px #ff00de;
+  }
+  100% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #0015ff, 0 0 70px #2b00ff, 0 0 80px #4000ff, 0 0 100px #5100ff, 0 0 150px #3700ff;
+  }
+}
+
+.glowing-text {
+  animation: glow 1.5s ease-in-out infinite alternate;
+  color: #fff;
+}
