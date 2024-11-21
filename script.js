@@ -1,4 +1,4 @@
-let time = 0;
+// let time = 0;
 let moves = 0;
 const card = document.querySelectorAll(".card");
 const startBtn = document.querySelector(".start");
@@ -41,7 +41,7 @@ function flipCard() {
 // Start button
 startBtn.addEventListener("click", () => {
   startBtn.style.display = "none";
-  timeStart();
+  // timeStart();
 
   gsap.from(".card", {
     duration: 0.5,
@@ -101,8 +101,8 @@ function resetGame() {
   startBtn.style.display = "none";
 
   // Reset time
-  time = 0;
-  timeUpdate.innerHTML = "0:00";
+  // time = 0;
+  // timeUpdate.innerHTML = "0:00";
 
   // Reset move counter
   moves = 0;
@@ -129,19 +129,19 @@ function resetGame() {
   resetStars();
   shuffleDeck();
   playAudio();
-  timeStart();
+  // timeStart();
 }
 
 // Time update
-function timeStart() {
-  setInterval(() => {
-    time += 1;
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    const formattedTime = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-    timeUpdate.innerHTML = formattedTime;
-  }, 1000);
-}
+// function timeStart() {
+//   setInterval(() => {
+//     time += 1;
+//     const minutes = Math.floor(time / 60);
+//     const seconds = time % 60;
+//     const formattedTime = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+//     timeUpdate.innerHTML = formattedTime;
+//   }, 1000);
+// }
 
 // Check if cards match
 function checkMatch() {
@@ -216,16 +216,16 @@ const halfStar = "fa-solid fa-star-half-stroke";
 // Function to set stars
 function starSetter() {
   // Set stars based on the number of moves
-  if (moves >= 10 && moves <= 15) {
+  if (moves >= 5 && moves <= 10) {
     starsList[2].className = halfStar;
-  } else if (moves >= 16 && moves <= 20) {
+  } else if (moves >= 10 && moves <= 15) {
     starsList[2].className = emptyStar;
+  } else if (moves >= 16 && moves <= 21) {
     starsList[1].className = halfStar;
-  } else if (moves >= 21 && moves <= 24) {
+  } else if (moves >= 22 && moves <= 27) {
     starsList[1].className = emptyStar;
-  } else if (moves >= 25 && moves <= 28) {
-    starsList[0].className = halfStar;
-  } else if (moves >= 29) {
+    // starsList[0].className = halfStar;
+  } else if (moves >= 28) {
     starsList[0].className = emptyStar;
   }
 }
